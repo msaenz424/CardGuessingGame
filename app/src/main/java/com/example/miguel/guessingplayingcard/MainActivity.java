@@ -4,7 +4,6 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.GridView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,15 +12,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // shows gridview filled with cards
-        GridView gridview = (GridView) findViewById(R.id.gvCards);
-        gridview.setAdapter(new ImageAdapter(this));
-
-        // attaches "gvCards" gridview to the fragment
+        // attaches fragment_cards layout to fragment_container fragment view
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         FragmentCards fragmentCards = new FragmentCards();
-        fragmentTransaction.add(R.id.fragment_container,fragmentCards);
+        fragmentTransaction.add(R.id.fragment_container, fragmentCards);
         fragmentTransaction.commit();
+
     }
 }
