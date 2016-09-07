@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
 import java.util.ArrayList;
@@ -15,7 +14,6 @@ import java.util.ArrayList;
  * Created by Miguel on 8/22/2016.
  */
 public class FragmentCards extends Fragment {
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -29,16 +27,27 @@ public class FragmentCards extends Fragment {
          An array of int containing the path to the drawable folder will need to be passed each time
          a new objCard is created.
         */
-        ArrayList<Card> arrayCards = new ArrayList<>(); //array of objects
+        Card arrayCards[][] = new Card[newGame.getNumberofRows()][3];
+        for (int i = 0; i < newGame.getNumberofRows(); i++){
+            for (int j = 0; j < 3; j++){
+                Card objCard = new Card(newGame.getCardsArray()[i][j]);
+                arrayCards[i][j] = objCard;
+            }
+        }
+
+        /* ArrayList<Card> arrayCards = new ArrayList<>(); //array of objects
 
         for (int i = 0; i < newGame.getCardsArray().length; i++){
             Card objCard = new Card(newGame.getCardsArray()[i]);
             arrayCards.add(objCard);
         }
+        */
 
         // shows gridview filled with cards
         GridView gridview = (GridView) view.findViewById(R.id.gvCards);
-        gridview.setAdapter(new ImageAdapter(view.getContext(), arrayCards));
+        ImageAdapter imageAdapter = new ImageAdapter(view.getContext(), arrayCards, newGame.getNumberofRows());
+        gridview.setAdapter(imageAdapter);
+        //gridview.setAdapter(new ImageAdapter(view.getContext(), newGame.getCardsArray()));
         return view; //return the fragment(containing the gridview) inflated
     }
 }
