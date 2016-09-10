@@ -8,5 +8,6 @@
         android:id="@+id/gvCards"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:numColumns="3"> </GridView>
+        android:numColumns="3"
+        android:stretchMode="columnWidth"> </GridView>
 </LinearLayout>
