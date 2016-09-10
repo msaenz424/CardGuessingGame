@@ -27,26 +27,6 @@
         android:layout_above="@+id/btnRestart"
         android:layout_alignParentStart="true">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Column 1"
-            android:id="@+id/btnColumn1" />
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Column 2"
-            android:id="@+id/btnColumn2" />
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Column 3"
-            android:id="@+id/btnColumn3" />
     </LinearLayout>
 
     <Button

@@ -1,12 +1,9 @@
 package com.example.miguel.guessingplayingcard;
 
-import java.util.ArrayList;
-
 /**
  * Created by Miguel on 8/22/2016.
  */
 public class Game {
-    private int mCounter = 0;
     private static final int CARDS_IN_GAME = 21; //for this to work it has to be an odd number and multiple of 3
     public static final int CARDS_IN_EACH_COLUMN = CARDS_IN_GAME / 3; // or in other words, number of rows
     private int cardsArray[][] = new int[CARDS_IN_EACH_COLUMN][3];
@@ -41,32 +38,20 @@ public class Game {
                 cardsArray[i][j] = tempArray[c++];
             }
         }
-
-
     }
 
     /*
     Each array argument represents a column of playing cards
-    Method re-arranges playing cards and returns a new array of them.
-    c counts the total of amount of playing cards
-    i counts cards in each column
+    This method re-arranges playing cards and returns a new array of them.
      */
-    public void arrangeCardsArray(Card array[][]){
-        /*
+    public void arrangeCardsArray(int array[]){
         int c = 0;
         for (int i = 0; i < CARDS_IN_EACH_COLUMN; i++){
-            cardsArray[c] = firstColumn[i];
-            c++;
+            for (int j = 0; j < 3; j++){
+                cardsArray[i][j]= array[c];
+                c++;
+            }
         }
-        for (int i = 0; i < CARDS_IN_EACH_COLUMN; i++){
-            cardsArray[c] = chosenColumn[i];
-            c++;
-        }
-        for (int i = 0; i < CARDS_IN_EACH_COLUMN; i++){
-            cardsArray[c] = lastColumn[i];
-            c++;
-        }
-        */
     }
 
     public int[][] getCardsArray(){
