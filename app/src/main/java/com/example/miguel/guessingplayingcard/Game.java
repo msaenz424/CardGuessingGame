@@ -4,6 +4,7 @@ package com.example.miguel.guessingplayingcard;
  * Created by Miguel on 8/22/2016.
  */
 public class Game {
+    int mCounter=0;
     private static final int CARDS_IN_GAME = 21; //for this to work it has to be an odd number and multiple of 3
     public static final int CARDS_IN_EACH_COLUMN = CARDS_IN_GAME / 3; // or in other words, number of rows
     private int cardsArray[][] = new int[CARDS_IN_EACH_COLUMN][3];
@@ -52,6 +53,7 @@ public class Game {
                 c++;
             }
         }
+        mCounter++;
     }
 
     public int[][] getCardsArray(){

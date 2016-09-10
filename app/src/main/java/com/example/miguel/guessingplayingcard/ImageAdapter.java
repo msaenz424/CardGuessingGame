@@ -1,11 +1,13 @@
 package com.example.miguel.guessingplayingcard;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class ImageAdapter extends BaseAdapter{
     private Context mContext;
@@ -40,7 +42,7 @@ public class ImageAdapter extends BaseAdapter{
 
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
-        LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null){
             //image_model is a customized layout that contains only an ImageView named "ivCard"
             convertView = layoutInflater.inflate(R.layout.image_model, null);
@@ -73,10 +75,23 @@ public class ImageAdapter extends BaseAdapter{
                         arrayCards[i][j].setImage(objGame.getCardsArray()[i][j]);
                     }
                 }
-                notifyDataSetChanged();
+                if (objGame.mCounter < 4){
+                    notifyDataSetChanged();
+                }else{
+                    LayoutInflater toastInflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    View layout = toastInflater.inflate(R.layout.custom_toast, (ViewGroup)parent.findViewById(R.id.custom_toast_container));
+                    ImageView imageView = (ImageView)layout.findViewById(R.id.ivResult);
+                    imageView.setImageResource(arrayCards[objGame.getNumberofRows()/2][1].getImage());
+
+                    Toast toast = new Toast(mContext);
+                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                    toast.setDuration(Toast.LENGTH_LONG);
+                    toast.setView(layout);
+                    toast.show();
+                    objGame.mCounter = 0;
+                }
             }
         });
-
         return convertView;
     }
 
