@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:id="@+id/linearLayout"
-        android:layout_above="@+id/btnRestart"
+        android:layout_above="@+id/btnInstructions"
         android:layout_alignParentStart="true">
 
     </LinearLayout>
@@ -32,8 +32,8 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Restart"
-        android:id="@+id/btnRestart"
+        android:text="Show instructions"
+        android:id="@+id/btnInstructions"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 

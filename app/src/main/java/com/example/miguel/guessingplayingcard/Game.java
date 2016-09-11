@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Game {
     int mCounter=0;
-    private static final int CARDS_IN_GAME = 21; //for this to work it has to be an odd number and multiple of 3
+    private static final int CARDS_IN_GAME = 51; //for this to work it has to be an odd number and multiple of 3
     public static final int CARDS_IN_EACH_COLUMN = CARDS_IN_GAME / 3; // or in other words, number of rows
     private int cardsArray[][] = new int[CARDS_IN_EACH_COLUMN][3];
 
@@ -66,7 +66,6 @@ public class Game {
         arrayDeck.add( R.drawable.c152);
         arrayDeck.add( R.drawable.c153);
         arrayDeck.add( R.drawable.c154);
-        arrayDeck.add( R.drawable.c155);
 
         Collections.shuffle(arrayDeck);
         int c = 0;
@@ -77,7 +76,6 @@ public class Game {
             }
         }
     }
-
     /*
     Each array argument represents a column of playing cards
     This method re-arranges playing cards and returns a new array of them.

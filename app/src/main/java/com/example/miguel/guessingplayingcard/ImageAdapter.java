@@ -78,13 +78,14 @@ public class ImageAdapter extends BaseAdapter{
                 if (objGame.mCounter < 4){
                     notifyDataSetChanged();
                 }else{
+                    v.setClickable(false);
                     LayoutInflater toastInflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     View layout = toastInflater.inflate(R.layout.custom_toast, (ViewGroup)parent.findViewById(R.id.custom_toast_container));
                     ImageView imageView = (ImageView)layout.findViewById(R.id.ivResult);
                     imageView.setImageResource(arrayCards[objGame.getNumberofRows()/2][1].getImage());
 
                     Toast toast = new Toast(mContext);
-                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                    toast.setGravity(Gravity.FILL, 0, 0);
                     toast.setDuration(Toast.LENGTH_LONG);
                     toast.setView(layout);
                     toast.show();
