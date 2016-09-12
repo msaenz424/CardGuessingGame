@@ -53,7 +53,7 @@ public class ImageAdapter extends BaseAdapter{
         int indexRow = getIndexRow(position);
 
         imageView.setImageResource(arrayCards[indexRow][indexCol].getImage());
-
+        imageView.setAdjustViewBounds(true); // trims any blank space between rows in gridviewdd
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +83,6 @@ public class ImageAdapter extends BaseAdapter{
                     View layout = toastInflater.inflate(R.layout.custom_toast, (ViewGroup)parent.findViewById(R.id.custom_toast_container));
                     ImageView imageView = (ImageView)layout.findViewById(R.id.ivResult);
                     imageView.setImageResource(arrayCards[objGame.getNumberofRows()/2][1].getImage());
-
                     Toast toast = new Toast(mContext);
                     toast.setGravity(Gravity.FILL, 0, 0);
                     toast.setDuration(Toast.LENGTH_LONG);

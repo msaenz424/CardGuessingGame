@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.miguel.guessingplayingcard.MainActivity">
+    tools:context="com.example.miguel.guessingplayingcard.MainActivity"
+    android:background="@color/abc_search_url_text_normal">
 
     <fragment
         android:layout_width="fill_parent"
