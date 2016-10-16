@@ -7,5 +7,6 @@
     <ImageView
         android:id="@+id/ivCard"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false" />
 </RelativeLayout>

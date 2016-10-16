@@ -1,6 +1,7 @@
 package com.example.miguel.guessingplayingcard;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,10 +50,11 @@ public class ImageAdapter extends BaseAdapter{
         }
         final ImageView imageView = (ImageView) convertView.findViewById(R.id.ivCard);
 
-        int indexCol = getIndexColumn(position);
         int indexRow = getIndexRow(position);
+        int indexCol = getIndexColumn(position);
 
-        imageView.setImageResource(arrayCards[indexRow][indexCol].getImage());
+        loadBitmap(arrayCards[indexRow][indexCol].getImage(), imageView, null);
+
         imageView.setAdjustViewBounds(true); // trims any blank space between rows in gridviewdd
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,15 +71,17 @@ public class ImageAdapter extends BaseAdapter{
                     newColumns[i + rows*2] = arrayCards[i][getIndexColumn(position+2)].getImage();
                 }
                 objGame.arrangeCardsArray(newColumns);
-                // after rearranging the cards, now these need to be shown left-to-right manner starting from row 0
+                // after cards are rearranged, now they need to be shown in a left-to-right manner starting from row 0
                 for (int i = 0; i < getCount()/3; i++){
                     for (int j = 0; j < 3; j++) {
                         arrayCards[i][j].setImage(objGame.getCardsArray()[i][j]);
                     }
                 }
+                // 4 is the number of times the cards need to be shuffled in order to "guess" the card
                 if (objGame.mCounter < 4){
                     notifyDataSetChanged();
                 }else{
+                    // this shows the guessed card
                     v.setClickable(false);
                     LayoutInflater toastInflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     View layout = toastInflater.inflate(R.layout.custom_toast, (ViewGroup)parent.findViewById(R.id.custom_toast_container));
@@ -102,4 +106,19 @@ public class ImageAdapter extends BaseAdapter{
     public int getIndexColumn(int linearPosition) {
         return linearPosition % 3;  // 3 refers to the # of columns. This value must not be changed
     }
+
+    /*
+         loadBitmap will be called to pass the image to be processed in the background
+         by using AsyncTask (BitmapWorkerTask extends it)
+      */
+    public void loadBitmap(int resId, ImageView imageView, Bitmap mPlaceHolderBitmap) {
+        if (BitmapWorkerTask.cancelPotentialWork(resId, imageView)) {
+            final BitmapWorkerTask task = new BitmapWorkerTask(imageView, mContext);
+            final BitmapWorkerTask.AsyncDrawable asyncDrawable =
+                    new BitmapWorkerTask.AsyncDrawable(mContext.getResources(), mPlaceHolderBitmap, task);
+            imageView.setImageDrawable(asyncDrawable);
+            task.execute(resId);
+        }
+    }
+
 }

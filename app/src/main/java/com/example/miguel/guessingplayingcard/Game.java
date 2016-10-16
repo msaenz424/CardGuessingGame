@@ -6,12 +6,12 @@ import java.util.List;
 
 public class Game {
     int mCounter=0;
-    private static final int CARDS_IN_GAME = 21; //for this to work it has to be an odd number and multiple of 3
+    private static final int CARDS_IN_GAME = 51; //for this to work it has to be an odd number and multiple of 3
     public static final int CARDS_IN_EACH_COLUMN = CARDS_IN_GAME / 3; // or in other words, number of rows
     private int cardsArray[][] = new int[CARDS_IN_EACH_COLUMN][3];
 
     public Game(){
-        List<Integer> arrayDeck = new ArrayList<>();
+        ArrayList<Integer> arrayDeck = new ArrayList<>();
         arrayDeck.add(R.drawable.c101);
         arrayDeck.add(R.drawable.c102);
         arrayDeck.add(R.drawable.c103);
