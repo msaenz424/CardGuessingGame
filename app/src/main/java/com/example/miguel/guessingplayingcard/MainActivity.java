@@ -20,9 +20,9 @@ public class MainActivity extends Activity {
         btnInstructions = (Button)findViewById(R.id.btnInstructions);
         btnInstructions.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String instructions = "Look for the card that you most like and click on the column that your card is located (you can click anywhere on the column). " +
-                        "Then, the deck will shuffle and you will have to locate your card again, once you locate it click again on its column. " +
-                        "Repeat this procedure 4 times";
+                String instructions = "I'll guess your card! Pick 1 card and touch on any part of the column in which your card is located. " +
+                        "Then, the deck will be shuffled, so look for you card again and repeat the procedure " +
+                        "(touch on any part of the column in which your card is located) 3 more times.";
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setMessage(instructions)
                         .setCancelable(false)
