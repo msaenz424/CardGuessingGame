@@ -29,7 +29,7 @@ public class FragmentCards extends Fragment {
 
         // shows gridview filled with cards
         GridView gridview = (GridView) view.findViewById(R.id.gvCards);
-        ImageAdapter imageAdapter = new ImageAdapter(view.getContext(), arrayCards, newGame);
+            ImageAdapter imageAdapter = new ImageAdapter(view.getContext(), arrayCards, newGame);
         gridview.setAdapter(imageAdapter);
         return view; //returns the fragment(containing the gridview) inflated
     }

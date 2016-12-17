@@ -26,7 +26,7 @@ public class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap>{
         this.mContext = context;
     }
 
-    // Decode image in background.
+    // Decodes image in background.
     @Override
     protected Bitmap doInBackground(Integer... params) {
         data = params[0];
@@ -47,8 +47,9 @@ public class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap>{
             }
         }
     }
-    /*
-        This method contains the BitmapFactory that allows decoding the image file.
+
+    /**
+     *  Allows decoding the image file of Card
         To use this method, first decode with inJustDecodeBounds set to true,
         pass the options through and then decode again using
         the new inSampleSize value and inJustDecodeBounds set to false:
@@ -67,6 +68,14 @@ public class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap>{
         return BitmapFactory.decodeResource(res, resId, options);
     }
 
+    /**
+     * Calculates a reduced resolution size of image to be shown
+     *
+     * @param options represents the BitmapFactory's option
+     * @param reqWidth represents the current width of image
+     * @param reqHeight represents the current height of image
+     * @return and int value representing how many times the size of images had to be reduced by 2
+     */
     public static int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image

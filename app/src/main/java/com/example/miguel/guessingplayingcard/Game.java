@@ -4,12 +4,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Game Model Object
+ *
+ * @author Miguel Saenz
+ */
 public class Game {
     int mCounter=0;
     private static final int CARDS_IN_GAME = 51; //for this to work it has to be an odd number and multiple of 3
     public static final int CARDS_IN_EACH_COLUMN = CARDS_IN_GAME / 3; // or in other words, number of rows
     private int cardsArray[][] = new int[CARDS_IN_EACH_COLUMN][3];
 
+    /** Class constructor */
     public Game(){
         ArrayList<Integer> arrayDeck = new ArrayList<>();
         arrayDeck.add(R.drawable.c101);
@@ -77,6 +83,8 @@ public class Game {
         arrayDeck.add(R.drawable.c164);
         arrayDeck.add(R.drawable.c165);
 
+        // shuffles the cards and then populate them into an multidimensional array
+        // which size is determined by the number of cards being used divided by 3
         Collections.shuffle(arrayDeck);
         int c = 0;
         for (int i = 0; i < CARDS_IN_EACH_COLUMN; i++){
@@ -86,9 +94,13 @@ public class Game {
             }
         }
     }
-    /*
-    Each array argument represents a column of playing cards
-    This method re-arranges playing cards and returns a new array of them.
+    /**
+     * Rearranges the main array of cards.
+     * Updates a counter which is used to check how many
+     * times the main array has been rearranged. The game should
+     * stop when the counters reaches 4.
+     *
+     * @param array this array represents a column in GridView
      */
     public void arrangeCardsArray(int array[]){
         int c = 0;
@@ -101,9 +113,20 @@ public class Game {
         mCounter++;
     }
 
+    /**
+     * Returns the a multidimensional array that can be used to populate
+     * the GridView.
+     * @return the main array of cards
+     */
     public int[][] getCardsArray(){
         return cardsArray;
     }
+
+    /**
+     * Returns the number of cards that exists in each column.
+     * This value is important for the algorithm to work.
+     * @return
+     */
     public int getNumberofRows(){
         return CARDS_IN_EACH_COLUMN;
     }
